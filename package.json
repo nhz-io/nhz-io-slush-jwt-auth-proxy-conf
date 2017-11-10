@@ -1,0 +1,62 @@
+{
+    "name": "@nhz.io/slush-jwt-auth-proxy-conf",
+    "description": "CouchDB JWT Auth Proxy nginx.conf generator",
+    "version": "1.0.0",
+    "homepage": "https://github.com/nhz-io/nhz-io-slush-jwt-auth-proxy-conf",
+    "author": {
+        "name": "Ishi Ruy",
+        "email": "dev@nhz.io"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/nhz-io/nhz-io-slush-jwt-auth-proxy-conf.git"
+    },
+    "bugs": {
+        "url": "https://github.com/nhz-io/nhz-io-slush-jwt-auth-proxy-conf/issues"
+    },
+    "license": "MIT",
+    "main": "slushfile.js",
+    "engines": {
+        "node": ">= 8.x.x",
+        "npm": ">= 5.x.x"
+    },
+    "scripts": {
+        "test": "cake lint && coffee README.litcoffee",
+        "lint": "cake lint",
+        "build": "cake lint && cake build",
+        "prepublishOnly": "npm run build",
+        "prepack": "mv README.litcoffee README.md",
+        "postpack": "mv README.md README.litcoffee",
+        "prepush": "npm test"
+    },
+    "dependencies": {
+        "gulp": "^3.9.1",
+        "gulp-rename": "^1.2.0",
+        "gulp-sequence": "^0.4.6",
+        "gulp-template": "^0.1.1",
+        "inquirer": "^3.3.0",
+        "map-stream": "0.0.7",
+        "pump": "^1.0.2",
+        "run-sequence": "^2.2.0",
+        "slugify": "^1.2.2",
+        "slush": ">=1.0.0",
+        "vinyl-transform": "^1.0.0"
+    },
+    "keywords": [
+        "nhz-io",
+        "nhz.io",
+        "slushgenerator",
+        "jwt",
+        "couchdb",
+        "jwt-auth-proxy",
+        "openresty",
+        "nginx",
+        "nginx.conf"
+    ],
+    "devDependencies": {
+        "cake": "^0.1.1",
+        "coffeelint": "^2.0.7",
+        "coffeescript": "^2.0.2",
+        "husky": "^0.14.3"
+    }
+}

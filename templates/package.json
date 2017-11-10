@@ -1,0 +1,58 @@
+{
+  "name": "@jwt-auth-proxy-conf/<%= pkgName %>",
+  "private": "true",
+  "version": "<%= pkgVersion %>",
+  "description": "JWT Auth Proxy Nginx config (openresty)",
+  "scripts": {
+    "slush": "slush",
+    "prepublish": "slush @nhz.io/jwt-auth-proxy-conf:regenerate && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "slush": "^1.1.1",
+    "@nhz.io/jwt-auth-proxy-conf": "^1.0.0"
+  },
+  "server": {
+    "HOST": "<%= HOST %>",
+    "PORT": <%= PORT %>,
+    "COUCH_HOST": "<%= COUCH_HOST %>",
+    "COUCH_PORT": <%= COUCH_PORT %>,
+    "COUCH_SCHEMA": "<%= COUCH_SCHEMA %>",
+    "ERROR_LOG": "<%= ERROR_LOG %>",
+    "PID_PATH": "<%= PID_PATH %>"
+  },
+  "proxy": {
+    "JWT_SECRET": "<%= JWT_SECRET %>",
+    "COUCH_PROXY_SECRET": "<%= COUCH_PROXY_SECRET %>",
+    "JWT_COOKIE_NAME": "<%= JWT_COOKIE_NAME %>",
+    "JWT_HEADER_NAME": "<%= JWT_HEADER_NAME %>",
+    "JWT_TOKEN_PREFIX": "<%= JWT_TOKEN_PREFIX %>"
+  },
+  "defaultRoutes": {
+    "/": [],
+    "^/_": ["_admin"],
+    "^/_session": [],
+    "^/_users": []
+  },
+  "routes": {
+    <% routes.forEach(({MATCH, ROLES, REWRITE}, i) => { %>
+      <% if (REWRITE && !(ROLES && ROLES.length)) { %>
+    "<%= MATCH %>": "<%= REWRITE %>"<%= (i + 1) === routes.length ? '' : ',' %>
+      <% } else if (!REWRITE && ROLES) { %>
+    "<%= MATCH %>": [
+      <% ROLES.forEach((ROLE, i) => { %>
+        "<%= ROLE %>"<%= (i + 1) === ROLES.length ? '' : ',' %>
+      <% }) %>
+    ]<%= (i + 1) === routes.length ? '' : ',' %>
+      <% } else { %>
+    "<%= MATCH %>": {
+      "rewrite": "<%= REWRITE %>",
+      "roles": [
+        <% ROLES.forEach((ROLE, i) => { %>
+          "<%= ROLE %>"<%= (i + 1) === ROLES.length ? '' : ',' %>
+        <% }) %>
+      ]
+    }<%= (i + 1) === routes.length ? '' : ',' %>
+      <% } %>
+    <% }) %>
+  }
+}

@@ -1,0 +1,13 @@
+*
+!README.litcoffee
+!coffeelint.json
+!Cakefile
+!.travis.yml
+!.npmignore
+!.gitignore
+!LICENSE
+!package.json
+!package-lock.json
+!.editorconfig
+!templates
+!templates/*

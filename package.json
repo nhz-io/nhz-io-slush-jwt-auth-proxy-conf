@@ -1,7 +1,7 @@
 {
     "name": "@nhz.io/slush-jwt-auth-proxy-conf",
     "description": "CouchDB JWT Auth Proxy nginx.conf generator",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "homepage": "https://github.com/nhz-io/nhz-io-slush-jwt-auth-proxy-conf",
     "author": {
         "name": "Ishi Ruy",

@@ -489,7 +489,7 @@ proxy_use_secret = true
 
     gulp.task 'regenerate', (cb) -> sequence 'load-pkg', '_regenerate', cb
 
-## Version 1.0.0
+## Version 1.0.1
 
 ## License [MIT](LICENSE)
 

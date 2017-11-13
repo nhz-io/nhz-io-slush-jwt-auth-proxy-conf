@@ -1,21 +1,21 @@
 # CouchDB JWT Auth Proxy nginx.conf generator
 
-[![Travis Build][travis]](https://travis-ci.org/nhz-io/nhz-io-slush-jwt-proxy-auth-conf)
-[![NPM Version][npm]](https://www.npmjs.com/package/@nhz.io/slush-jwt-proxy-auth-conf)
+[![Travis Build][travis]](https://travis-ci.org/nhz-io/nhz-io-slush-jwt-auth-proxy-conf)
+[![NPM Version][npm]](https://www.npmjs.com/package/@nhz.io/slush-jwt-auth-proxy-conf)
 
 > Nginx ([openresty]) configuration generator to act as [JWT] [Proxy Authentication] Gate for [CouchDB].
 
 ## Install
 
 ```bash
-npm i -g slush @nhz.io/slush-jwt-proxy-auth-conf
+npm i -g slush @nhz.io/slush-jwt-auth-proxy-conf
 ```
 
 ## Usage
 ```bash
 mkdir jwt-auth-proxy && cd jwt-auth-proxy
 
-slush @nhz.io/slush-jwt-proxy-auth-conf
+slush @nhz.io/slush-jwt-auth-proxy-conf
 ```
 
 ## Secrets
@@ -84,7 +84,7 @@ proxy_use_secret = true
 * Intended to run in [Docker]
 * JWT by URL is preferred method (rather than headers)
 * You can use JWT by URL as a key to open session, (JWT in cookie) and rest of requests with basename `/`
-* You can revisit the configuration later by running `slush @nhz.io/slush-jwt-proxy-auth-conf` again
+* You can revisit the configuration later by running `slush @nhz.io/slush-jwt-auth-proxy-conf` again
 * You can distribute the `package.json` and regenerate `nginx.conf` anywhere by running `npm i`
 * Use [jwt-hs256-proxy-auth-token] to generate tokens
 
@@ -493,8 +493,8 @@ proxy_use_secret = true
 
 ## License [MIT](LICENSE)
 
-[travis]: https://img.shields.io/travis/nhz-io/nhz-io-slush-jwt-proxy-auth-conf.svg?style=flat
-[npm]: https://img.shields.io/npm/v/@nhz.io/slush-jwt-proxy-auth-conf.svg?style=flat
+[travis]: https://img.shields.io/travis/nhz-io/nhz-io-slush-jwt-auth-proxy-conf.svg?style=flat
+[npm]: https://img.shields.io/npm/v/@nhz.io/slush-jwt-auth-proxy-conf.svg?style=flat
 [x_auth_roles]: http://docs.couchdb.org/en/2.1.1/config/auth.html#couch_httpd_auth/x_auth_roles
 [x_auth_token]: http://docs.couchdb.org/en/2.1.1/config/auth.html#couch_httpd_auth/x_auth_token
 [Proxy Authentication]: http://docs.couchdb.org/en/2.1.1/api/server/authn.html#api-auth-proxy
